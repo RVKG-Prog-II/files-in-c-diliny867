@@ -1,14 +1,27 @@
 #include <string>
-// You may include other headers, as needed
+#include <fstream>
 
-using std::string;
+void countAndWriteDigitsPerLine(std::string filename, std::string outputFilename){
+    std::ifstream fin(filename);
+    std::ofstream fout(outputFilename);
 
-void countAndWriteDigitsPerLine(string filename, string outputFilename)
-{
-    // Your code here
+    std::string line;
+    std::size_t size;
+
+    while(std::getline(fin,line)){
+        size = std::count_if(line.begin(),line.end(),std::isdigit);
+        fout << size << "\n";
+    }
+
 }
 
-unsigned int countMaxDigits(string filename)
-{
-    // Your code here
+unsigned int countMaxDigits(string filename){
+    std::ifstream fin(filename);
+    unsigned int max = 0;
+    while(std::getline(fin,line)){
+        size = std::count_if(line.begin(),line.end(),std::isdigit);
+        max = std::max(size,max);
+        fout << size << "\n";
+    }
+    return max;
 }
